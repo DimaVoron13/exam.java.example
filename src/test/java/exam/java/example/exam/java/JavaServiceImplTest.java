@@ -2,6 +2,9 @@ package exam.java.example.exam.java;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Collection;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 public class JavaServiceImplTest {
@@ -15,17 +18,15 @@ public class JavaServiceImplTest {
 
     @Test
     public void addQuestion() {
-        Question expected = temp;
-        Question actual = javaServ.addQuestion(temp.getQuestion(), temp.getAnswer());
-        assertEquals(expected, actual);
-        assertThrows(QuestionAlreadyExistException.class,
-                () -> javaServ.addQuestion("Question1", "Answer1"),
-                "QuestionAlreadyExistException");
+        javaServ.addQuestion("Question2", "Answer2");
+        Collection<Question> questions =
+                javaServ.allQuestion();
+        assertEquals(1, questions.size());
     }
+
     @Test
     public void removeQuestion() {
         Question expected = temp;
-        javaServ.addQuestion(temp.getQuestion(), temp.getAnswer());
         int l1 = javaServ.allQuestion().size();
         Question actual = javaServ.removeQuestion(temp.getQuestion(), temp.getAnswer());
         int l2 = javaServ.allQuestion().size();

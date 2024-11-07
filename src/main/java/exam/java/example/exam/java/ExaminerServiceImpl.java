@@ -6,14 +6,14 @@ import java.util.*;
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
 
-    private final JavaServiceImpl serv;
+    private final JavaService serv;
     public ExaminerServiceImpl(JavaServiceImpl serv) { this.serv = serv; }
     private final Set<Question> examQuestion = new HashSet<>();
 
     @Override
     public Set<Question> getQuestion(int amount) {
         examQuestion.clear();
-        List<Question> allQestion = serv.allQuestion();//new ArrayList<>();
+        List<Question> allQestion = (List<Question>) serv.allQuestion();//new ArrayList<>();
         if (amount < 1 || amount > serv.allQuestion().size()) {
             throw new InvalidNumberException("IllegalNumbException");
         }
