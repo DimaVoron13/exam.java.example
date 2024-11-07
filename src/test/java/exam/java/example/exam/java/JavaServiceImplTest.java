@@ -18,7 +18,7 @@ public class JavaServiceImplTest {
 
     @Test
     public void addQuestion() {
-        javaServ.addQuestion("Question2", "Answer2");
+        javaServ.addQuestion("QuestionX", "AnswerX");
         Collection<Question> questions =
                 javaServ.allQuestion();
         assertEquals(1, questions.size());
